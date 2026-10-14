@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NEXOR VPN</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#080a10;color:#f5f5fa;font-family:Arial,sans-serif;padding:24px}
+header{display:flex;align-items:center;gap:12px;border-bottom:1px solid #25283a;padding-bottom:20px}
+.logo{background:#8172ff;color:white;padding:12px 16px;border-radius:13px;font-weight:bold;font-size:22px}
+h1{font-size:25px;letter-spacing:4px}
+main{max-width:800px;margin:45px auto}
+.card{background:#111521;border:1px solid #282d40;border-radius:22px;padding:28px;margin-bottom:20px}
+.tag{color:#7de8d7;font-size:12px;letter-spacing:2px}
+h2{font-size:32px;margin:15px 0}
+p{color:#a6aec2;line-height:1.6}
+.status{margin:28px 0;padding:18px;background:#0a0d15;border-radius:14px}
+button{background:#8172ff;color:white;border:0;padding:14px 20px;border-radius:12px;font-weight:bold;cursor:pointer}
+button.secondary{background:#202638;margin-left:8px}
+.item{padding:15px 0;border-bottom:1px solid #282d40;display:flex;justify-content:space-between;gap:12px}
+.muted{color:#9aa4b9}
+small{color:#7e899f;line-height:1.7}
+footer{text-align:center;color:#657087;margin:30px 0}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">N</div>
+  <h1>NEXOR</h1>
+</header>
+
+<main>
+  <section class="card">
+    <div class="tag">PRIVATE NETWORK</div>
+    <h2>Твой интернет.<br>Твои правила.</h2>
+    <p>Управляй своим подключением через единую панель NEXOR.</p>
+
+    <div class="status">
+      <strong id="state">● Сервер не подключён</strong>
+      <p id="description">VPN-сервер ещё не настроен.</p>
+    </div>
+
+    <button onclick="checkStatus()">Проверить статус</button>
+    <button class="secondary" onclick="toggleAdmin()">Админ-панель</button>
+  </section>
+
+  <section class="card">
+    <div class="tag">CONNECTION</div>
+    <h3>Настройки подключения</h3>
+    <div class="item"><span class="muted">Протокол</span><strong>WireGuard</strong></div>
+    <div class="item"><span class="muted">Сервер</span><strong>Не настроен</strong></div>
+    <div class="item"><span class="muted">Защита</span><strong>Не активна</strong></div>
+  </section>
+
+  <section class="card" id="admin" hidden>
+    <div class="tag">CONTROL CENTER</div>
+    <h3>NEXOR Admin</h3>
+    <div class="item"><span class="muted">Активные серверы</span><strong>0</strong></div>
+    <div class="item"><span class="muted">Устройства</span><strong>0</strong></div>
+    <div class="item"><span class="muted">Backend</span><strong>Не подключён</strong></div>
+    <p>Это демонстрационная панель. Реальное управление добавим после настройки сервера и защиты входа.</p>
+  </section>
+
+  <section class="card">
+    <h3>О проекте</h3>
+    <p>NEXOR — личный проект для управления VPN-подключением.</p>
+    <small>Сейчас это только сайт. Кнопки не включают настоящий VPN и не меняют сетевое соединение.</small>
+  </section>
+</main>
+
+<footer>NEXOR · PRIVATE NETWORK · 2026</footer>
+
+<script>
+function checkStatus(){
+  document.getElementById('state').textContent='● Сервер не подключён';
+  document.getElementById('description').textContent='Сначала необходимо установить и настроить VPN-сервер.';
+}
+function toggleAdmin(){
+  const panel=document.getElementById('admin');
+  panel.hidden=!panel.hidden;
+  if(!panel.hidden) panel.scrollIntoView({behavior:'smooth'});
+}
+</script>
+</body>
+</html>
