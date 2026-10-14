@@ -43,7 +43,18 @@ footer{text-align:center;color:#657087;margin:30px 0}
 
     <button onclick="checkStatus()">Проверить статус</button>
     <button class="secondary" onclick="toggleAdmin()">Админ-панель</button>
-  </section>
+  </section<function toggleAdmin(){
+  const panel = document.getElementById('admin');
+
+  if (panel.hidden) {
+    panel.hidden = false;
+    panel.style.display = 'block';
+    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  } else {
+    panel.hidden = true;
+    panel.style.display = 'none';
+  }
+}
 
   <section class="card">
     <div class="tag">CONNECTION</div>
